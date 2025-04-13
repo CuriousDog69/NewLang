@@ -17,6 +17,8 @@ function convert(input) {
         } else if (letter === ' ') {
             // If the character is a space, add a newline
             output += '    ';
+        } else if (letter === '/n'){
+            output += '/n/n';
         } else {
             // For other non-alphabet characters, just append them as is
             output += letter;
