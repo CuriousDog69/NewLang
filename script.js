@@ -13,10 +13,10 @@ function convert(input) {
 
         if (index >= 0 && index <= 25) {
             // If the character is a valid letter (a-z)
-            output += characters[index] + "  ";  // Map to corresponding character
+            output += characters[index] + ' ';  // Map to corresponding character
         } else if (letter === ' ') {
             // If the character is a space, add a newline
-            output += '\n';
+            output += '    ';
         } else {
             // For other non-alphabet characters, just append them as is
             output += letter;
