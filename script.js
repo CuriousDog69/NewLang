@@ -17,9 +17,7 @@ function encode(input) {
         } else if (letter === ' ') {
             // If the character is a space, add a newline
             output += '   ';
-        } else if (letter === "\n"){
-            output += '\n\n';
-        } else {
+        }  else {
             // For other non-alphabet characters, just append them as is
             output += letter;
         }
@@ -41,8 +39,10 @@ function evaluateCustomChar(input) {
         }
     }
     if (index != 0) {
+        if (value === 31) {return "\n";}
         return String.fromCharCode(value + 97);
-    } else {return ""}
+    } 
+    return "";
 }
 
 function decode(input) {
