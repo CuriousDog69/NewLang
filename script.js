@@ -16,7 +16,7 @@ function encode(input) {
             output += characters[index] + ' ';  // Map to corresponding character
         } else if (letter === ' ') {
             // If the character is a space, add a newline
-            output += '    ';
+            output += '   ';
         } else if (letter === "\n"){
             output += '\n\n';
         } else {
@@ -46,7 +46,7 @@ function evaluateCustomChar(input) {
 }
 
 function decode(input) {
-    let words = input.split("  ");
+    let words = input.split("   ");
     let output = "";
     for (const word of words) {
         let customChars = word.split(' ');
