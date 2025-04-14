@@ -1,4 +1,4 @@
-function convert(input) {
+function encode(input) {
     const characters = [
         ".....", "....|", "...|.", "...||", "..|..", "..|.|", "..||.", "..|||", ".|...", ".|..|", ".|.|.",
         ".|.||", ".||..", ".||.|", ".|||.", ".||||", "|....", "|...|", "|..|.", "|..||", "|.|..", "|.|.|",
@@ -17,8 +17,8 @@ function convert(input) {
         } else if (letter === ' ') {
             // If the character is a space, add a newline
             output += '    ';
-        } else if (letter === '/n'){
-            output += '/n/n';
+        } else if (letter === "\n"){
+            output += '\n\n';
         } else {
             // For other non-alphabet characters, just append them as is
             output += letter;
@@ -28,12 +28,42 @@ function convert(input) {
     return output;
 }
 
+function evaluateCustomChar(input) {
+    let value = 0;
+    let chars = input.split('');
+    let index = 0;
+    for (const char of chars) {
+        if (char === '|') {
+            value += 2 ** (4 - index);
+            index ++;
+        } else if (char === '.') {
+            index ++;
+        }
+    }
+    return String.fromCharCode(value + 97);
+}
+
+function decode(input) {
+    let customChars = input.split(' ');
+    let output = "";
+    for (const char of customChars) { 
+        if (char === "\n") {output += " ";}
+        else {output += evaluateCustomChar(char);}
+    }
+    return output;
+}
+
 // Event listener for input field (when the user presses Enter)
 document.getElementById('inputField').addEventListener('keydown', function (e) {
     if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();  // Prevent the default Enter behavior (e.g., submitting a form)
         const userInput = this.value;  // Get the value from the input field
-        const convertedText = convert(userInput);  // Convert the input text
+        //Message is more | or . than not so we assume the user wants to decode
+        if (userInput.split(".").length + userInput.split("|").length > str.length / 2) {
+            const convertedText = decode(userInput);
+        } else {
+            const convertedText = encode(userInput);  // Convert the input text
+        }
         document.getElementById('bottomText').textContent = convertedText;  // Output converted text to the bottom panel
     }
 });
