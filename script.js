@@ -40,7 +40,9 @@ function evaluateCustomChar(input) {
             index ++;
         }
     }
-    return String.fromCharCode(value + 97);
+    if (index != 0) {
+        return String.fromCharCode(value + 97);
+    } else {return ""}
 }
 
 function decode(input) {
