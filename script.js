@@ -59,10 +59,11 @@ document.getElementById('inputField').addEventListener('keydown', function (e) {
         e.preventDefault();  // Prevent the default Enter behavior (e.g., submitting a form)
         const userInput = this.value;  // Get the value from the input field
         //Message is more | or . than not so we assume the user wants to decode
-        if (userInput.split(".").length + userInput.split("|").length > str.length / 2) {
-            const convertedText = decode(userInput);
+        let convertedText;
+        if (userInput.split(".").length + userInput.split("|").length > userInput.length / 2) {
+            convertedText = decode(userInput);
         } else {
-            const convertedText = encode(userInput);  // Convert the input text
+            convertedText = encode(userInput);  // Convert the input text
         }
         document.getElementById('bottomText').textContent = convertedText;  // Output converted text to the bottom panel
     }
