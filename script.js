@@ -6,7 +6,6 @@ function encode(input) {
     ];
 
     let output = "";
-
     let letters = input.split('');  // Split input into individual characters
     for (const letter of letters) {
         let index = letter.toLowerCase().charCodeAt(0) - 97;  // Get index for lowercase letters 'a' to 'z'
@@ -16,7 +15,7 @@ function encode(input) {
             output += characters[index] + ' ';  // Map to corresponding character
         } else if (letter === ' ') {
             // If the character is a space, add a newline
-            output += '   ';
+            output += "   ";
         }  else {
             // For other non-alphabet characters, just append them as is
             output += letter;
