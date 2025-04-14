@@ -46,11 +46,14 @@ function evaluateCustomChar(input) {
 }
 
 function decode(input) {
-    let customChars = input.split(' ');
+    let words = input.split("  ");
     let output = "";
-    for (const char of customChars) { 
-        if (char === "\n") {output += " ";}
-        else {output += evaluateCustomChar(char);}
+    for (const word of words) {
+        let customChars = word.split(' ');
+        for (const char of customChars) { 
+            output += evaluateCustomChar(char);
+        }
+        output += " ";
     }
     return output;
 }
