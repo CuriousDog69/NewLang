@@ -22,7 +22,7 @@ function encode(input) {
         }
     }
 
-    //return output;
+    return output;
 }
 
 function evaluateCustomChar(input) {
