@@ -61,6 +61,23 @@ function wait(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+// Auto-resize textarea when content changes
+document.addEventListener('DOMContentLoaded', function() {
+  const textarea = document.getElementById('inputField');
+  
+  // Function to adjust height automatically
+  function autoResizeTextarea() {
+    textarea.style.height = 'auto'; // Reset height
+    textarea.style.height = textarea.scrollHeight + 'px'; // Set to content height
+  }
+  
+  // Call on input
+  textarea.addEventListener('input', autoResizeTextarea);
+  
+  // Initial call
+  autoResizeTextarea();
+});
+
 // Event listener for input field (when the user presses Enter)
 document.getElementById('inputField').addEventListener('keydown', async function (e) {
     await wait(1);
