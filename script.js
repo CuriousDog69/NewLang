@@ -60,6 +60,7 @@ function wait(ms) {
 
 // Event listener for input field (when the user presses Enter)
 document.getElementById('inputField').addEventListener('keydown', async function (e) {
+    //this shit is cursed, why does removing it break ths
     await wait(1);
     const userInput = this.value;
     let convertedText;
