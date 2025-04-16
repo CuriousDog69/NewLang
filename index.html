@@ -9,10 +9,24 @@
             background-color: green;
             color: white;
             border: none;
-            padding: 10px 20px;
-            margin-top: 10px;
+            padding: 15px 30px;
+            margin-top: 20px;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 8px;
+            width: 100%; /* Full width */
+            height: 60px; /* Make it taller */
+        }
+
+        .input-panel {
+            display: flex;
+            flex-direction: column; /* Stack textarea and button */
+            align-items: stretch;
+        }
+
+        .input-field {
+            width: 100%;
+            min-height: 150px;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -25,7 +39,7 @@
             class="input-field"
             placeholder="..."
         ></textarea>
-        <!-- Blank Green Button -->
+        <!-- Big blank green button BELOW textarea -->
         <button id="greenButton" class="green-button"></button>
     </div>
 
