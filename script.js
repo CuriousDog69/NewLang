@@ -6,9 +6,10 @@ function encode(input) {
     ];
 
     let output = "";
-    let letters = input.split('');  // Split input into individual characters
-    const logDiv = document.createElement('div');
-    logDiv.textContent = letters;
+    let letters = input.split('');// Split input into individual characters
+    return letters.toString();
+    //const logDiv = document.createElement('div');
+    //logDiv.textContent = letters;
     for (const letter of letters) {
         let index = letter.toLowerCase().charCodeAt(0) - 97;  // Get index for lowercase letters 'a' to 'z'
 
@@ -24,7 +25,7 @@ function encode(input) {
         }
     }
 
-    return output;
+    //return output;
 }
 
 function evaluateCustomChar(input) {
