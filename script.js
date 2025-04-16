@@ -60,7 +60,7 @@ function wait(ms) {
 
 // Event listener for input field (when the user presses Enter)
 document.getElementById('inputField').addEventListener('keydown', async function (e) {
-    await wait(1);
+    //await wait(1);
     const userInput = this.value;
     let convertedText;
     if (userInput.split(".").length + userInput.split("|").length > 4) {
