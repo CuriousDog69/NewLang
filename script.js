@@ -7,9 +7,6 @@ function encode(input) {
 
     let output = "";
     let letters = input.split('');// Split input into individual characters
-    return input;
-    //const logDiv = document.createElement('div');
-    //logDiv.textContent = letters;
     for (const letter of letters) {
         let index = letter.toLowerCase().charCodeAt(0) - 97;  // Get index for lowercase letters 'a' to 'z'
 
@@ -67,7 +64,7 @@ document.getElementById('inputField').addEventListener('keydown', function (e) {
         const userInput = this.value;  // Get the value from the input field
         //Message is more | or . than not so we assume the user wants to decode
         let convertedText;
-        if  (false ) {//(userInput.split(".").length + userInput.split("|").length > userInput.length / 2) {
+        if  (userInput.split(".").length + userInput.split("|").length > 4) {
             convertedText = decode(userInput);
         } else {
             convertedText = encode(userInput);  // Convert the input text
