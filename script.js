@@ -7,7 +7,8 @@ function encode(input) {
 
     let output = "";
     let letters = input.split('');  // Split input into individual characters
-    console.log(letters);
+    const logDiv = document.createElement('div');
+    logDiv.textContent = letters;
     for (const letter of letters) {
         let index = letter.toLowerCase().charCodeAt(0) - 97;  // Get index for lowercase letters 'a' to 'z'
 
