@@ -7,7 +7,7 @@ function encode(input) {
 
     let output = "";
     let letters = input.split('');// Split input into individual characters
-    return letters.toString();
+    return input;
     //const logDiv = document.createElement('div');
     //logDiv.textContent = letters;
     for (const letter of letters) {
