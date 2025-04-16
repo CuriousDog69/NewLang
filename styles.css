@@ -12,29 +12,18 @@ body {
   height: 100vh;
 }
 
-.top-panel {
-  flex: 0 0 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(0, 0, 0);
-}
-
-.top-text {
-  font-size: 30px;
-  color: rgb(65, 170, 20);
-}
-
 .input-panel {
   flex: 0 0 200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(0, 0, 0);
+  /* background-color: rgb(0, 0, 0); */
+    margin: 10rem;
 }
 
 .input-field {
-  width: 800px;
+  width: 80%;
+    max-width: 800px;
   height: 200px;
   font-size: 24px;
   background-color: rgb(10,10,10);
@@ -44,6 +33,12 @@ body {
   padding: 10px;
   resize: none;
   outline: none;
+  text-align: center;
+    /* Centers the text horizontally */
+    line-height: 180px;
+    /* Approximate vertical centering - adjust if needed */
+    display: block;
+    /* Revert to block display instead of flex */
 }
 
 .bottom-panel {
