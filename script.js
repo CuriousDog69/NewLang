@@ -67,7 +67,7 @@ document.getElementById('inputField').addEventListener('keydown', function (e) {
         const userInput = this.value;  // Get the value from the input field
         //Message is more | or . than not so we assume the user wants to decode
         let convertedText;
-        if (userInput.split(".").length + userInput.split("|").length > userInput.length / 2) {
+        if  (false ) {//(userInput.split(".").length + userInput.split("|").length > userInput.length / 2) {
             convertedText = decode(userInput);
         } else {
             convertedText = encode(userInput);  // Convert the input text
