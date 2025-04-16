@@ -80,7 +80,7 @@ document.getElementById('greenButton').addEventListener('click', async function 
     } else {
         convertedText = encode(userInput);
     }
-    navigator.clipboard.writeText(userInput)
+    navigator.clipboard.writeText(convertedText)
   .then(() => {
     console.log("Text copied to clipboard!");
   })
