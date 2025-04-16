@@ -4,16 +4,29 @@
     <meta charset="UTF-8" />
     <title>Translator for Kevin Boomerang</title>
     <link rel="stylesheet" href="styles.css" />
+    <style>
+        .green-button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <!-- Input Panel -->
     <div class="input-panel">
-      <textarea
-              id="inputField"
-              class="input-field"
-              placeholder="..."
-      ></textarea>
+        <textarea
+            id="inputField"
+            class="input-field"
+            placeholder="..."
+        ></textarea>
+        <!-- Blank Green Button -->
+        <button id="greenButton" class="green-button"></button>
     </div>
 
     <!-- Bottom Panel -->
