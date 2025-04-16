@@ -2,20 +2,17 @@ function encode(input) {
     const characters = [".....", "....|", "...|.", "...||", "..|..", "..|.|", "..||.", "..|||", ".|...", ".|..|", ".|.|.", ".|.||", ".||..", ".||.|", ".|||.", ".||||", "|....", "|...|", "|..|.", "|..||", "|.|..", "|.|.|", "|.||.", "|.|||", "||...", "||..|"];
 
     let output = "";
-    let letters = input.split(""); // Split input into individual characters
+    let letters = input.split("");
     const logDiv = document.createElement("div");
     logDiv.textContent = letters;
     for (const letter of letters) {
-        let index = letter.toLowerCase().charCodeAt(0) - 97; // Get index for lowercase letters 'a' to 'z'
+        let index = letter.toLowerCase().charCodeAt(0) - 97;
 
         if (index >= 0 && index <= 25) {
-            // If the character is a valid letter (a-z)
-            output += characters[index] + " "; // Map to corresponding character
+            output += characters[index] + " ";
         } else if (letter === " ") {
-            // If the character is a space, ads more spaces
             output += "   ";
         } else {
-            // For other non-alphabet characters, just append them as is
             output += letter;
         }
     }
@@ -80,15 +77,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Event listener for input field (when the user presses Enter)
 document.getElementById('inputField').addEventListener('keydown', async function (e) {
+    //this shit is cursed, why does removing it break ths
     await wait(1);
-    const userInput = this.value; // Get the value from the input field
-    //Message is more | or . than not so we assume the user wants to decode
+    const userInput = this.value;
     let convertedText;
     if (userInput.split(".").length + userInput.split("|").length > 4) {
         convertedText = decode(userInput);
     } else {
-        convertedText = encode(userInput); // Convert the input text
+        convertedText = encode(userInput);
     }
     console.log(userInput);
-    document.getElementById("bottomText").textContent = convertedText; // Output converted text to the bottom panel
+    document.getElementById("bottomText").textContent = convertedText;
+});
+
+document.getElementById('greenButton').addEventListener('click', async function () {
+    const userInput = document.getElementById('inputField').value;
+    let convertedText;
+    if (userInput.split(".").length + userInput.split("|").length > 4) {
+        convertedText = decode(userInput);
+    } else {
+        convertedText = encode(userInput);
+    }
+    navigator.clipboard.writeText(convertedText)
+  .then(() => {
+    console.log("Text copied to clipboard!");
+  })
+  .catch(err => {
+    console.error("Failed to copy: ", err);
+  });
+
 });
