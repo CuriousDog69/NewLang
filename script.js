@@ -58,25 +58,7 @@ function wait(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-// Auto-resize textarea when content changes
-document.addEventListener('DOMContentLoaded', function() {
-  const textarea = document.getElementById('inputField');
-  
-  // Function to adjust height automatically
-  function autoResizeTextarea() {
-    textarea.style.height = 'auto'; // Reset height
-    textarea.style.height = textarea.scrollHeight + 'px'; // Set to content height
-  }
-  
-  // Call on input
-  textarea.addEventListener('input', autoResizeTextarea);
-  
-  // Initial call
-  autoResizeTextarea();
-});
-
-// Event listener for input field (when the user presses Enter)
-document.getElementById('inputField').addEventListener('keydown', async function (e) {
+document.getElementById("inputField").addEventListener("keydown", async function (e) {
     //this shit is cursed, why does removing it break ths
     await wait(1);
     const userInput = this.value;
@@ -90,20 +72,52 @@ document.getElementById('inputField').addEventListener('keydown', async function
     document.getElementById("bottomText").textContent = convertedText;
 });
 
-document.getElementById('greenButton').addEventListener('click', async function () {
-    const userInput = document.getElementById('inputField').value;
-    let convertedText;
-    if (userInput.split(".").length + userInput.split("|").length > 4) {
-        convertedText = decode(userInput);
-    } else {
-        convertedText = encode(userInput);
-    }
-    navigator.clipboard.writeText(convertedText)
-  .then(() => {
-    console.log("Text copied to clipboard!");
-  })
-  .catch(err => {
-    console.error("Failed to copy: ", err);
-  });
+// Auto-resize textarea when content changes
+document.addEventListener("DOMContentLoaded", function () {
+    const textarea = document.getElementById("inputField");
+    const copyButton = document.getElementById("copyButton");
+    const bottomText = document.getElementById("bottomText");
 
+    // Function to adjust height automatically
+    function autoResizeTextarea() {
+        textarea.style.height = "auto"; // Reset height
+        textarea.style.height = textarea.scrollHeight + "px"; // Set to content height
+    }
+
+    // Call on input
+    textarea.addEventListener("input", autoResizeTextarea);
+
+    // Initial call
+    autoResizeTextarea();
+
+    // Add copy button functionality
+    copyButton.addEventListener("click", function () {
+        // Copy the bottom text content
+        navigator.clipboard
+            .writeText(bottomText.textContent)
+            .then(() => {
+                // Provide visual feedback
+                const originalText = copyButton.textContent;
+                copyButton.textContent = "Copied!";
+                setTimeout(() => {
+                    copyButton.textContent = originalText;
+                }, 2000);
+            })
+            .catch((err) => {
+                console.error("Could not copy text: ", err);
+            });
+    });
 });
+
+// Remove the duplicate event listener below
+// document.getElementById("copyButton").addEventListener("click", async function () {
+//     const userInput = document.getElementById("inputField").value;
+//     let convertedText;
+//     if (userInput.split(".").length + userInput.split("|").length > 4) {
+//         convertedText = decode(userInput);
+//     } else {
+//         convertedText = encode(userInput);
+//     }
+
+//     navigator.clipboard.writeText(convertedText);
+// });

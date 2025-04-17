@@ -3,19 +3,17 @@
 	--background-color: rgb(5, 5, 5);
 	--text-color: rgb(65, 170, 20);
 	--caret-color: green;
+	--text-size: 2rem;
 
 	/* Spacing */
-	--panel-margin: 6rem;
-
-	/* Sizes */
-	--font-size-normal: 2rem;
---text-max-width: 80%; /* Added missing variable */
+	--panel-margin: 1rem;
 }
+
 body {
 	margin: 0;
-		padding: 0;
+	padding: 0;
 	background-color: var(--background-color);
-		font-family: 'SansSerif', sans-serif;
+	font-family: 'SansSerif', sans-serif;
 	color: var(--text-color);
 }
 
@@ -27,22 +25,22 @@ body {
 }
 
 .input-panel {
-			display: flex;
+	display: flex;
 		align-items: center;
 		justify-content: center;
 	background-color: var(--background-color);
-		width: 100vw;
-		padding-top: var(--panel-margin);
-		padding-bottom: var(--panel-margin);
-/* Remove the fixed flex: 1 to allow the panel to grow */
-	flex: 0 0 auto;
+	width: 100%;
+		height: 40vh;
+		/* 40% of viewport height */
+		padding: var(--panel-margin);
+		box-sizing: border-box;
 }
 
 .input-field {
 	width: 100%;
-	min-height: 4rem;
+min-height: 4rem;
 	max-height: 70vh;
-	font-size: var(--font-size-normal);
+	font-size: var(--text-size);
 	background-color: var(--background-color);
 	color: var(--text-color);
 	caret-color: var(--caret-color);
@@ -51,25 +49,62 @@ body {
 	border: none;
 	white-space: pre-wrap;
 	word-wrap: break-word;
-	overflow-y: hidden;
+	overflow-y: auto;
 	resize: none;
 	padding: 1rem;
 	box-sizing: border-box;
-	display: block;
 }
 
 .bottom-panel {
-	flex: 1;
-		display: flex;
+	display: flex;
 		align-items: center;
 		justify-content: center;
 	background-color: var(--background-color);
+	width: 100%;
+		height: 40vh;
+		/* 40% of viewport height */
+		padding: var(--panel-margin);
+		box-sizing: border-box;
 }
 
 .bottom-text {
-	font-size: var(--font-size-normal);
-		color: var(--text-color);
-		white-space: pre-wrap;
-		word-wrap: break-word;
-	max-width: var(--text-max-width);
+	width: 100%;
+	height: 100%;
+	font-size: var(--text-size);
+	color: var(--text-color);
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	overflow-y: auto;
+	padding: 1rem;
+	box-sizing: border-box;
+	
+	/* Add these properties to center text vertically */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+	
+	.button-panel {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--background-color);
+		width: 100%;
+		height: 20vh;
+		/* 20% of viewport height */
+		padding: var(--panel-margin);
+		box-sizing: border-box;
+	}
+	
+	.copy-button {
+		background-color: var(--text-color);
+		color: var(--background-color);
+		border: none;
+		padding: 15px 30px;
+		font-size: 1.2rem;
+		cursor: pointer;
+		border-radius: 8px;
+		min-width: 150px;
+		min-height: 60px;
 }
